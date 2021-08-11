@@ -15,7 +15,12 @@ public class ControlAvion : MonoBehaviour
     public float misilForce = 20f;
     public Transform firePoint;
     public GameObject misilPrefab;
+    public int cantidadBots;
 
+    //public GameObject botUno;
+    //public GameObject botDos;
+
+    public static int contadorBotsDestruidos;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,8 +30,19 @@ public class ControlAvion : MonoBehaviour
     {
         this.transform.position = startPos;
     }
+
+   //public void mateUnBot()
+   // {
+   //     contadorBotsDestruidos++;
+   // }
     void Update()
     {
+        
+        if (contadorBotsDestruidos >= cantidadBots)
+        {
+           ControlHud.victory = true;
+        }
+
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * rootSpeed1 * Time.deltaTime);
@@ -87,8 +103,13 @@ public class ControlAvion : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ufo"))
         {
-            Destroy(this.gameObject);
+            Time.timeScale = 0;
             ControlHud.gameOver = true;
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource a in audios)
+            {
+                a.Pause();
+            }
         }
 
         if(collision.gameObject.CompareTag("Suelo"))
@@ -97,4 +118,5 @@ public class ControlAvion : MonoBehaviour
             ControlHud.gameOver = true;
         }
     }
+    
 }

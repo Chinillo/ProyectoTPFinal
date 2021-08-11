@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Custom.Indicators;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,26 @@ using UnityEngine.UI;
 
 public class ControlBot : MonoBehaviour
 {
-    public int contadorBots;
+    //public int cantidadBots;
+    //public int contadorBotsDestruidos;
     private int hp;
-    public OffscreenIndicators Indicators;
+    
     void Start()
     {
         hp = 100;
+    }
+
+    void Update()
+    {
+        //if (contadorBotsDestruidos >= cantidadBots)
+        //{
+        //    ControlHud.victory = true;
+        //}
+
+        //if (cantidadBots <= 0)
+        //{
+        //    ControlHud.victory = true;
+        //}
     }
 
     public void recibirDaño()
@@ -23,17 +38,19 @@ public class ControlBot : MonoBehaviour
             Desaparecer();
         }
 
-       if(contadorBots <= 0)
-        {
-            ControlHud.victory = true;
-        }
+       //if(cantidadBots <= 0)
+       // {
+       //    ControlHud.victory = true;
+       // }
     }
 
-    private void Desaparecer()
+    public void Desaparecer()
     {
         Destroy(gameObject);
-        contadorBots = contadorBots - 1;
+        ControlAvion.contadorBotsDestruidos++;
     }
+
+    
 
 
     public void GameOver()
@@ -45,7 +62,7 @@ public class ControlBot : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bala"))
         {
-            recibirDaño();
+            Desaparecer();
         }
 
         if (collision.gameObject.CompareTag("Misil"))

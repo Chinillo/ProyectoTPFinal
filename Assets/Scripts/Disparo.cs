@@ -35,6 +35,8 @@ public class Disparo : MonoBehaviour
 
     void Update()
     {
+        
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
@@ -62,6 +64,8 @@ public class Disparo : MonoBehaviour
             rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
         }
     }
+
+    
 }
 public enum Ammo
 {

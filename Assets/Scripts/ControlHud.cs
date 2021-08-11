@@ -10,13 +10,21 @@ public class ControlHud : MonoBehaviour
     public Text victoryText;
     public Text gameOverText;
     public Text distanceText;
+    public Text speedText;
+    public Text alturaText;
+    public float altura;
+    public float speed = 40;
     public float distance;
+    public GameObject avion;
 
     void Start()
     {
         victory = false;
         gameOver = false;
+        speed = 40;
         distance = 0;
+        alturaText.text = " " + altura;
+        speedText.text = " " + speed;
         distanceText.text = "Distancia " + distance.ToString();
         distanceText.gameObject.SetActive(true);
         victoryText.gameObject.SetActive(false);
@@ -25,6 +33,8 @@ public class ControlHud : MonoBehaviour
 
     void Update()
     {
+        alturaText.text = avion.transform.position.y.ToString("000");
+        speedText.text = " " + speed;
         if (gameOver)
         {
             Time.timeScale = 0;
@@ -46,6 +56,15 @@ public class ControlHud : MonoBehaviour
             victoryText.gameObject.SetActive(true);
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            speed += 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            speed -= 2;
+        }
 
     }
 }
