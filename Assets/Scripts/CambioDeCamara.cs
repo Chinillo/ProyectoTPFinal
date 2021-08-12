@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class CambioDeCamara : MonoBehaviour
 {
     public GameObject camara1;
     public GameObject camara2;
-
     AudioListener camara1AudioLis;
     AudioListener camara2AudioLis;
+
 
     void Start()
     {
@@ -15,6 +16,8 @@ public class CambioDeCamara : MonoBehaviour
 
         cambioPosCamara(PlayerPrefs.GetInt("PosicionCamara"));
     }
+
+
     void Update()
     {
         CambiarCamara();
@@ -26,7 +29,7 @@ public class CambioDeCamara : MonoBehaviour
     }
 
     void CambiarCamara()
-    { 
+    {
         if (Input.GetKeyDown(KeyCode.F))
         {
             Contador();
@@ -35,7 +38,6 @@ public class CambioDeCamara : MonoBehaviour
 
     void Contador()
     {
-        
         int contadorCamara = PlayerPrefs.GetInt("PosicionCamara");
         contadorCamara++;
         cambioPosCamara(contadorCamara);
@@ -56,7 +58,7 @@ public class CambioDeCamara : MonoBehaviour
             camara1AudioLis.enabled = true;
 
             camara2AudioLis.enabled = false;
-            camara2.SetActive(false);       
+            camara2.SetActive(false);
         }
 
         if (posCamara == 1)
@@ -65,7 +67,8 @@ public class CambioDeCamara : MonoBehaviour
             camara1AudioLis.enabled = false;
 
             camara2AudioLis.enabled = true;
-            camara2.SetActive(true);   
+            camara2.SetActive(true);
         }
+
     }
 }
