@@ -5,14 +5,14 @@ public class CambioDeCamara : MonoBehaviour
 {
     public GameObject camara1;
     public GameObject camara2;
-    AudioListener camara1AudioLis;
-    AudioListener camara2AudioLis;
+    //AudioListener camara1AudioLis;
+    //AudioListener camara2AudioLis;
 
 
     void Start()
     {
-        camara1AudioLis = camara1.GetComponent<AudioListener>();
-        camara2AudioLis = camara2.GetComponent<AudioListener>();
+        //camara1AudioLis = camara1.GetComponent<AudioListener>();
+        //camara2AudioLis = camara2.GetComponent<AudioListener>();
 
         cambioPosCamara(PlayerPrefs.GetInt("PosicionCamara"));
     }
@@ -55,18 +55,18 @@ public class CambioDeCamara : MonoBehaviour
         if (posCamara == 0)
         {
             camara1.SetActive(true);
-            camara1AudioLis.enabled = true;
+            //camara1AudioLis.enabled = true;
 
-            camara2AudioLis.enabled = false;
+            //camara2AudioLis.enabled = false;
             camara2.SetActive(false);
         }
 
         if (posCamara == 1)
         {
             camara1.SetActive(false);
-            camara1AudioLis.enabled = false;
+            //camara1AudioLis.enabled = false;
 
-            camara2AudioLis.enabled = true;
+            //camara2AudioLis.enabled = true;
             camara2.SetActive(true);
         }
 

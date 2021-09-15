@@ -48,6 +48,6 @@ public class Pausa : MonoBehaviour
         AudioListener.pause = false;
         pauseMenuUI.SetActive(false);
         isPaused = false;
-        Application.LoadLevel(0);
+        //    //Application.LoadLevel(0);
     }
 }
