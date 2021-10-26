@@ -10,6 +10,7 @@ public class ControlBot : MonoBehaviour
     //public int cantidadBots;
     //public int contadorBotsDestruidos;
     private int hp;
+    public ParticleSystem explosion;
     
     void Start()
     {
@@ -46,6 +47,7 @@ public class ControlBot : MonoBehaviour
 
     public void Desaparecer()
     {
+        explosion.Play();
         Destroy(gameObject);
         ControlAvion.contadorBotsDestruidos++;
     }
