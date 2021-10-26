@@ -79,6 +79,7 @@ public class ControlAvion : MonoBehaviour
             }
         }
 
+
         transform.position += transform.forward * speed * Time.deltaTime;
 
         if (Input.GetKeyDown("escape"))
@@ -114,7 +115,7 @@ public class ControlAvion : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Suelo"))
         {
-            Destroy(this.gameObject);
+            Time.timeScale = 0;
             ControlHud.gameOver = true;
         }
     }
