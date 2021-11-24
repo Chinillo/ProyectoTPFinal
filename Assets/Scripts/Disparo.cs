@@ -9,8 +9,10 @@ public class Disparo : MonoBehaviour
     public static Ammo ammo;
     public static int ammunition;
     public static Disparo _ShootingPlayer;
+    public GameObject misil;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public GameObject enemigo;
     public float bulletForce = 20f;
 
     private void Awake()
@@ -18,7 +20,7 @@ public class Disparo : MonoBehaviour
         if (_ShootingPlayer == null)
         {
             _ShootingPlayer = this.gameObject.GetComponent<Disparo>();
-            
+
         }
         else
         {
@@ -35,14 +37,18 @@ public class Disparo : MonoBehaviour
 
     void Update()
     {
-        
-
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
             CheckAmmo();
         }
+
+        if (Input.GetKeyDown("X"))
+        {
+            misilShoot();
+        }
     }
+
     private void CheckAmmo()
     {
         if (ammunition <= 0)
@@ -65,8 +71,15 @@ public class Disparo : MonoBehaviour
         }
     }
 
-    
+    private void misilShoot()
+    {
+        GameObject theShoot = Instantiate(misil, firePoint.position, firePoint.rotation);
+        theShoot.GetComponent<Misil>().enemigo = enemigo;
+        Destroy(theShoot, 3);
+    }
+
 }
+
 public enum Ammo
 {
     Normal,

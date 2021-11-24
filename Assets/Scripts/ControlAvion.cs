@@ -71,7 +71,12 @@ public class ControlAvion : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (speed >= minSpeed)
             {
@@ -87,10 +92,7 @@ public class ControlAvion : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Shoot();
-        }
+        
     }
 
     public void Shoot()

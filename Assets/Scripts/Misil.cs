@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class Misil : MonoBehaviour
 {
-    [SerializeField] private Transform m_target = null; //marcaje
-    [SerializeField] private float m_speed = 0.0f; //velocidad de movimiento
-    [SerializeField] private float m_followRate = 0.0f; //angulo de rate para pegar al enemigo
-    public GameObject boom;
+    public GameObject enemigo;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] float speed;
+    [SerializeField] float failRadius;
+    [SerializeField] GameObject explosionMisil;
+    
 
 
     private void Update()
     {
-        Quaternion desireRotation = Quaternion.LookRotation(m_target.position - transform.position); //deseamos la rotacion por la cual el misil irá hacia el target
-        transform.rotation = Quaternion.Slerp(transform.rotation, desireRotation, m_followRate * Time.deltaTime); //hago esto para que el misil no mire siempre al objetivo sino que lo encuentre
-
-        transform.Translate(Vector3.forward * Time.deltaTime * m_speed); //para que el misil avance
-
-        
+        if (enemigo != null)
+        {
+            GoToTarget();
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    void GoToTarget()
     {
-        OnBoom();
-    }
-
-    public void OnBoom()
-    {
-        Instantiate(boom, transform.position, Quaternion.identity);
-        Destroy(gameObject, 0.2f);
+        Quaternion desireRotation = Quaternion.LookRotation(enemigo.transform.position - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, desireRotation, rotationSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
