@@ -30,4 +30,12 @@ public class Misil : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, desireRotation, rotationSpeed * Time.deltaTime);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("ufo"))
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }

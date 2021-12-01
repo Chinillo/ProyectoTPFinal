@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.VFX;
 
 public class ControlAvion : MonoBehaviour
 {
+    public GameObject chispas;
     public float speed = 20;
     public float maxSpeed = 100;
     public float minSpeed = 5;
@@ -12,9 +14,9 @@ public class ControlAvion : MonoBehaviour
     public static ControlAvion _Player;
     private Vector3 startPos;
     public Camera camaraEnPrimeraPersona;
-    public float misilForce = 20f;
+    //public float misilForce = 20f;
     public Transform firePoint;
-    public GameObject misilPrefab;
+    //public GameObject misilPrefab;
     public int cantidadBots;
 
     //public GameObject botUno;
@@ -71,10 +73,10 @@ public class ControlAvion : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Shoot();
-        }
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    Shoot();
+        //}
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -95,12 +97,12 @@ public class ControlAvion : MonoBehaviour
         
     }
 
-    public void Shoot()
-    {
-        GameObject bullet = Instantiate(misilPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(firePoint.forward * misilForce, ForceMode.Impulse);
-    }
+    //public void Shoot()
+    //{
+    //    GameObject bullet = Instantiate( misilPrefab, firePoint.position, firePoint.rotation);
+    //    Rigidbody rb = bullet.GetComponent<Rigidbody>();
+    //    //rb.AddForce(firePoint.forward * misilForce, ForceMode.Impulse);
+    //}
 
     public void OnCollisionEnter(Collision collision)
     {

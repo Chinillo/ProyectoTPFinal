@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2486589270103221752}
   - component: {fileID: 1824247584563225740}
   - component: {fileID: 9182543613256018931}
-  - component: {fileID: 3328755333727173890}
   - component: {fileID: 6976289351978429027}
+  - component: {fileID: -6101518934015564240}
   m_Layer: 0
   m_Name: Misil
   m_TagString: Misil
@@ -94,26 +94,8 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
-  m_Direction: 1
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3328755333727173890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995297192416312336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed01cb16cf408642bb3b5bdef9e6f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemigo: {fileID: 3089916183737591237, guid: f0cbe942f5e65e44ab4c0728585e59ba, type: 3}
-  rotationSpeed: 6
-  speed: 20
-  failRadius: 4
-  explosionMisil: {fileID: 4350152989676857425, guid: 4910b0883f230a04ab0a3e0eb653d0be,
-    type: 3}
 --- !u!54 &6976289351978429027
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,8 +107,21 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6101518934015564240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995297192416312336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74af08ee2cda034ab1809cf8a902c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

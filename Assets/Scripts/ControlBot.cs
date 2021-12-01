@@ -3,32 +3,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.UI;
 
 public class ControlBot : MonoBehaviour
 {
-    //public int cantidadBots;
-    //public int contadorBotsDestruidos;
+    
     private int hp;
-    public ParticleSystem explosion;
-    public GameObject explosión;
+    //public ParticleSystem explosion;
+    public VisualEffect chispitas;
     
     void Start()
     {
+        //chispitas.Stop();
         hp = 100;
     }
 
     void Update()
     {
-        //if (contadorBotsDestruidos >= cantidadBots)
-        //{
-        //    ControlHud.victory = true;
-        //}
-
-        //if (cantidadBots <= 0)
-        //{
-        //    ControlHud.victory = true;
-        //}
+        
     }
 
     public void recibirDaño()
@@ -48,14 +41,19 @@ public class ControlBot : MonoBehaviour
 
     public void Desaparecer()
     {
-
-        explosion.Play();
+        //explosion.Play();
+        SpawnParticle();
         Destroy(gameObject);
         ControlAvion.contadorBotsDestruidos++;
     }
 
-    
 
+    private void SpawnParticle()
+    {
+        VisualEffect newChispitasEffect = Instantiate(chispitas, transform.position, transform.rotation);
+        newChispitasEffect.Play();
+        Destroy(newChispitasEffect.gameObject, 3f);
+    }
 
     public void GameOver()
     {
@@ -71,7 +69,8 @@ public class ControlBot : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Misil"))
         {
-            recibirDaño();
+            Desaparecer();
+            Destroy(this.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Player"))
